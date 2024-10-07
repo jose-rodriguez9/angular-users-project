@@ -1,0 +1,63 @@
+<div>
+
+    @if(isApiInFlight===true){
+        <mat-progress-bar class="load-bar" mode="indeterminate" />
+    }
+    
+    <button mat-icon-button (click)="routeToHome()"><mat-icon>keyboard_backspace</mat-icon></button> 
+
+    @if(user && isApiError===false){
+    <mat-card class="user-card" appearance="outlined">
+
+        <mat-card-header>
+            <mat-card-title> 
+                {{user.name}}
+                <button #favToggle mat-icon-button class="fav-toggle"  (click)="toggleFavorite(!user.favorite)">
+                    <mat-icon [ngClass]="{'user-favorite-icon': user.favorite}">{{user.favorite? 'star': 'star_outline'}}</mat-icon>
+                </button>
+            </mat-card-title>
+            
+          </mat-card-header>
+          <mat-card-content>
+            <div class="details-container">
+
+
+            <div class="column">
+            <div class="column-header">Personal Info</div>
+            <div><span>Emai: </span> {{user.email}}</div>
+            <div><span>Phone: </span> {{user.phone}}</div>
+            <div><span>Username: </span> {{user.username}}</div>
+            <div><span>Website: </span> {{user.website}}</div>
+        </div>
+
+        <div class="column">
+            <div class="column-header">Address</div>
+
+            <div><span>Street: </span> {{user.address.street}}</div>
+            <div><span>City: </span> {{user.address.city}}</div>
+            <div><span>Suite: </span> {{user.address.suite}}</div>
+            <div><span>Zipcode: </span> {{user.address.zipcode}}</div>
+            <div><span>Latitude: </span> {{user.address.geo.lat}}</div>
+            <div><span>Longitude: </span> {{user.address.geo.lng}}</div>
+        </div>
+
+        <div class="column">
+            <div class="column-header">Company</div>
+
+            <div><span>Name: </span> {{user.company.name}}</div>
+            <div><span>Catch Phrase: </span> {{user.company.catchPhrase}}</div>
+            <div><span>Bs: </span> {{user.company.bs}}</div>
+        </div>
+
+        </div>
+
+
+
+          </mat-card-content>
+
+    </mat-card>
+}@else {
+
+    <crx-error [isApiInFlight]="isApiInFlight" (emitButtonClick)="getUsers()" />
+}
+</div>

@@ -1,0 +1,32 @@
+.user-card{
+    height: 500px;
+    width:100%
+}
+
+.details-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+
+}
+
+.column-header{
+    font-size: 20px;
+    border-bottom-style: solid;
+    margin-bottom: 12px;
+}
+
+.column{
+    width:34%
+}
+
+.load-bar{
+    position: fixed;
+    top: 72px;
+    z-index: 1000;
+    width:98%
+ }
+
+ .user-favorite-icon{
+    color: #005cbb;
+}
