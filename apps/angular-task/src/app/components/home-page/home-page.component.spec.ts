@@ -112,4 +112,16 @@ describe('HomePageComponent', () => {
 
     });
 
+    it('should route to user page when user card is clicked', () => {
+
+        const routeToUserSpy = jest.spyOn(component, 'routeToUser');
+        component.usersFiltered = signal(mockUsers);
+        fixture.detectChanges();
+
+        const userCard = fixture.debugElement.query(By.css('.user-card'));
+        userCard.triggerEventHandler('click', null);
+        expect(routeToUserSpy).toHaveBeenCalledWith(mockUsers[0]);
+
+    });
+
 });
